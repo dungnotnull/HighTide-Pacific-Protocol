@@ -40,7 +40,7 @@ pirated PDFs. Stable IDs in brackets are used in pipeline JSON and UI.
 
 **[WERNER-2017] Hydrogeology and Management of Freshwater Lenses on Atoll Islands: Review of Current Knowledge and Research Needs** — Werner, A. D., Sharp, H. K., Galvis, S. C., Post, V. E. A., Sinclair, P. (2017) — Journal of Hydrology, 551 — https://www.sciencedirect.com/science/article/pii/S0022169417301269 (DOI: 10.1016/j.jhydrol.2017.02.047) — *Relevance:* Peer-reviewed review of atoll freshwater lens salinization mechanisms, covering Tuvalu, Kiribati and other atolls. — *Supports:* Impact narrative: sea-level rise damages freshwater security before inundation, justifying sea-level-based parametric triggers for L&D.
 
-**[BAILEY-2014] Estimating Transient Freshwater Lens Dynamics for Atoll Islands of the Maldives** — Bailey, R. T., Khalil, A., Chatikavanij, V. (2014) — Journal of Hydrology, 513 — https://www.sciencedirect.com/science/article/abs/pii/S0022169414003345 — *Relevance:* Models freshwater lens degradation under climatic variability and sea-level influence on atoll islands. — *Supports:* Quantitative link between sustained sea-level anomalies and water-security loss (trigger severity weighting).
+**[BAILEY-2014] Estimating Transient Freshwater Lens Dynamics for Atoll Islands of the Maldives** — Bailey, R. T., Khalil, A., Chatikavanij, V. (2014) — Journal of Hydrology, 515, 247–256 — https://www.sciencedirect.com/science/article/abs/pii/S0022169414003345 — *Relevance:* Models freshwater lens degradation under climatic variability and sea-level influence on atoll islands. — *Supports:* Quantitative link between sustained sea-level anomalies and water-security loss (trigger severity weighting).
 
 ---
 
@@ -58,7 +58,7 @@ pirated PDFs. Stable IDs in brackets are used in pipeline JSON and UI.
 
 **[UNFCCC-FRLD] Fund for Responding to Loss and Damage** — UNFCCC — https://unfccc.int/fund-for-responding-to-loss-and-damage — *Relevance:* Official page of the UNFCCC L&D Fund (operationalized at COP28). — *Supports:* L&D framing: HighTide as complementary, fast-disbursing funding arrangement.
 
-**[COP28-1CP28] Decision 1/CP.28: Operationalization of the New Funding Arrangements, Including a Fund, for Responding to Loss and Damage** — UNFCCC (2023) — COP28, Dubai — https://unfccc.int/documents/632319 — *Relevance:* The decision text establishing the Fund's governing instrument and arrangements. — *Supports:* Policy legitimacy for the L&D fund design and disbursement logic.
+**[COP28-1CP28] Decision 1/CP.28 and 5/CMA.5: Operationalization of the New Funding Arrangements, Including a Fund, for Responding to Loss and Damage** — UNFCCC (2023) — COP28, Dubai — https://unfccc.int/documents/634215 — *Relevance:* The decision text (FCCC/CP/2023/L.1–FCCC/PA/CMA/2023/L.1, adopted as Decisions 1/CP.28 and 5/CMA.5) establishing the Fund's governing instrument and arrangements. — *Supports:* Policy legitimacy for the L&D fund design and disbursement logic.
 
 **[SNLD] Santiago Network** — UNFCCC — https://unfccc.int/santiago-network — *Relevance:* Official UNFCCC body catalyzing technical assistance for loss and damage (est. COP25). — *Supports:* L&D institutional framing and technical-assistance complement.
 
@@ -80,9 +80,9 @@ pirated PDFs. Stable IDs in brackets are used in pipeline JSON and UI.
 
 **[CHAINLINK] Chainlink Data Feeds Documentation** — Chainlink — https://docs.chain.link/data-feeds — *Relevance:* Official documentation of decentralized oracle networks delivering external data to smart contracts. — *Supports:* Oracle architecture for feeding verified sea-level data on-chain.
 
-**[GOFFARD-2025] Collaborative and Parametric Insurance on the Ethereum Blockchain** — Goffard, P.-O. (2025) — ASTIN Bulletin: Journal of the IAA, 56(1) — https://doi.org/10.1017/asb.2025.10078 (preprint: https://arxiv.org/abs/2412.05321) — *Relevance:* Peer-reviewed design of a blockchain-based parametric insurance scheme with smart-contract premiums and payouts. — *Supports:* Academic validation of the smart-contract parametric payout architecture.
+**[GOFFARD-2025] Collaborative and Parametric Insurance on the Ethereum Blockchain** — Goffard, P.-O., Loisel, S. (2025) — ASTIN Bulletin: Journal of the IAA, 56, 127–153 (published online 2025; issue 2026) — https://doi.org/10.1017/asb.2025.10078 (preprint: https://arxiv.org/abs/2412.05321) — *Relevance:* Peer-reviewed design of a blockchain-based parametric insurance scheme with smart-contract premiums and payouts. — *Supports:* Academic validation of the smart-contract parametric payout architecture.
 
-**[CONDON-2017] Smart After All: Blockchain, Smart Contracts, Parametric Insurance, and Smart Energy Grids** — Condon, M. (2017) — Georgetown Law Technology Review, 1(2) — https://georgetownlawtechreview.org/smart-after-all-blockchain-smart-contracts-parametric-insurance-and-smart-energy-grids/GLTR-04-2017/ — *Relevance:* Legal-scholarly analysis of pairing parametric insurance with smart contracts for automatic execution. — *Supports:* Legal and design rationale for automatic, dispute-free parametric payouts.
+**[CONDON-2017] Smart After All: Blockchain, Smart Contracts, Parametric Insurance, and Smart Energy Grids** — Cohn, A., West, T., Parker, C. (2017) — Georgetown Law Technology Review, 1(2), 273 — https://georgetownlawtechreview.org/smart-after-all-blockchain-smart-contracts-parametric-insurance-and-smart-energy-grids/GLTR-04-2017/ — *Relevance:* Legal-scholarly analysis of pairing parametric insurance with smart contracts for automatic execution. — *Supports:* Legal and design rationale for automatic, dispute-free parametric payouts.
 
 ---
 

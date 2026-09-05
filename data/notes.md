@@ -5,10 +5,9 @@ This file contains notes for each data JSON file, indicating their source, statu
 ---
 
 ## sea_level.json
-**Status**: DUMMY DATA - Replace with actual data from all_data_v1.xlsx (CLIMATE_CHANGE_SEA_INDICATORS)
-**Source**: Pacific Data Hub, dataset `CLIMATE_CHANGE_SEA_INDICATORS`
-**Description**: Meters, relative sea-level change, 21 PICTs, 1993–2023
-**Action needed**: Extract real data from Excel sheet `CLIMATE_CHANGE_SEA_INDICATORS` and replace this file
+**Status**: REAL DATA (verified 2026-09-05 — values match yearly means of `pacific_sla_monthly_satelite` in `pacific_data_all.xlsx` to 4 decimals)
+**Source**: Pacific Data Hub, dataset `pacific_sla_monthly_satelite` (monthly satellite sea level anomaly), yearly-mean aggregated by `prep_data_final.py`
+**Description**: Yearly-mean sea level anomaly, 13 PICs, 2005–2025. NOTE: source `unit_measure` column says "mm" but magnitudes are inconsistent with that label; treated as relative anomaly units (thresholds in the protocol are trend-relative, so unit-invariant). Long-term trend analysis uses `sea_level_trend.json` (official `CLIMATE_CHANGE_SEA_INDICATORS`, meters, 1993–2023) instead, because ENSO phase contaminates this series' 2005–2025 trend.
 
 ---
 

@@ -64,8 +64,8 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 - **ParametricPayout:** verifies oracle EIP-712 signatures; evaluates trigger thresholds; tiered payout; one payout per event id (anti-double-count); pro-rata if pool short.
 
 ### 5.2 AI Engine (`/ai-engine`, Python)
-- **Forecast:** per-country sea-level trend + prediction intervals (80/95%) — statsmodels statistical forecasting, not deep learning (scientific honesty: 21 annual points per country).
-- **Risk scoring:** exceedance probability within 12-month horizon -> normalized risk index -> pool allocation weights. Output JSON hash-anchored via ClimateDataRegistry.
+- **Forecast:** per-country sea-level trend + prediction intervals (80/95%) on the 30-year trend series (1993–2023, meters) — statsmodels statistical forecasting, not deep learning (scientific honesty: ~31 annual points per country). A separate forecast of the trigger series feeds the warning-level exceedance probability.
+- **Risk scoring:** blend of chronic exposure (trend mm/yr from the 30-year series) and acute anomaly risk (P(next-year trigger reading > trend + 1 sigma)) -> normalized risk index -> pool allocation weights. Output JSON hash-anchored via ClimateDataRegistry.
 - **Backtest:** replay protocol over 2015–2025 against real data (calibration on 2005–2014); report trigger dates, tiers, hypothetical payouts; validate against documented El Niño episodes (2015–16, 2020–22). This is the credibility centerpiece.
 
 ### 5.3 Keeper / Oracle (`/keeper`, TypeScript)
@@ -80,14 +80,16 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 
 | Item | Definition |
 |---|---|
-| Data basis | `sea_level.json`: 13 PICs, annual relative sea level, 2005–2025 (n=21 per country) |
-| Baseline (calibration window) | Per-country mean + sigma over 2005–2014 |
-| Trigger threshold | Reading >= baseline + k·sigma (initial k=2; backtest may revise, final value documented in README) |
+| Trigger series | `sea_level.json`: yearly mean of monthly satellite SLA (`pacific_sla_monthly_satelite`), 13 PICs, 2005–2025 — verified real (matches source Excel); unit label inconsistent in source ("mm") — treated as relative anomaly units, thresholds are trend-relative so unit-invariant |
+| Trend series | `sea_level_trend.json` (extracted from `CLIMATE_CHANGE_SEA_INDICATORS`): annual, METER, 1993–2023, official PDH climate indicator — used for long-term trend, forecast and the trend component of risk |
+| Why dual-series | ENSO phase contaminates the 2005–2025 trigger series trend (e.g. Tuvalu OLS ≈ 45 mm/yr — not credible SLR); the 30-year meter series gives a scientifically defensible trend (Tuvalu ≈ 4 mm/yr, consistent with literature) |
+| Baseline (calibration window) | Per-country OLS trend + residual sigma over 2005–2014 of the trigger series |
+| Trigger threshold | Reading >= trend(year) + k·sigma (initial k=2; backtest may revise, final value documented in README) |
 | Persistence | N=2 consecutive readings above threshold (anti-noise) |
 | Payout tiers | 1–2 sigma: 30% of allocation; 2–3 sigma: 60%; >3 sigma: 100% |
 | Backtest window | 2015–2025 (excludes calibration window, avoids threshold contamination) |
-| Demo event | El Niño 2015–16 sea-level spike (real, present in dataset) |
-| Production path note | Annual PDH data for prototype; production ingests monthly PSMSL/NOAA tide-gauge readings (documented in README) |
+| Demo event | El Niño / ENSO-driven sea-level anomaly in real data (validated against documented ENSO years 2015–16, 2020–22) |
+| Production path note | Annual aggregation for prototype; the source is monthly and Plan 3 (keeper) may replay monthly readings for a more realistic demo; production ingests monthly PSMSL/NOAA tide-gauge readings (documented in README) |
 
 ## 7. Mock vs real (submission honesty table)
 

@@ -66,7 +66,7 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 ### 5.2 AI Engine (`/ai-engine`, Python)
 - **Forecast:** per-country sea-level trend + prediction intervals (80/95%) on the 30-year trend series (1993–2023, meters) — statsmodels statistical forecasting, not deep learning (scientific honesty: ~31 annual points per country). A separate forecast of the trigger series feeds the warning-level exceedance probability.
 - **Risk scoring:** blend of chronic exposure (trend mm/yr from the 30-year series) and acute anomaly risk (P(next-year trigger reading > trend + 1 sigma)) -> normalized risk index -> pool allocation weights. Output JSON hash-anchored via ClimateDataRegistry.
-- **Backtest:** replay protocol over 2015–2025 against real data (calibration on 2005–2014); report trigger dates, tiers, hypothetical payouts; validate against documented El Niño episodes (2015–16, 2020–22). This is the credibility centerpiece.
+- **Backtest:** replay protocol over 2015–2025 against real data (calibration on 2005–2014); report trigger dates, tiers, hypothetical payouts; validate against documented ENSO episodes — in the western tropical Pacific, HIGH sea-level anomalies coincide with La Niña (2020–22) while El Niño (2015–16) produces drops [WIDLANSKY-2014], so eligibility validates on 2020–22 events. This is the credibility centerpiece.
 
 ### 5.3 Keeper / Oracle (`/keeper`, TypeScript)
 - Holds oracle key; replays real PDH series as time-accelerated signed readings; exposes a "run demo scenario" entry point (El Niño 2015–16).
@@ -88,7 +88,7 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 | Persistence | N=2 consecutive readings above threshold (anti-noise) |
 | Payout tiers | 1–2 sigma: 30% of allocation; 2–3 sigma: 60%; >3 sigma: 100% |
 | Backtest window | 2015–2025 (excludes calibration window, avoids threshold contamination) |
-| Demo event | El Niño / ENSO-driven sea-level anomaly in real data (validated against documented ENSO years 2015–16, 2020–22) |
+| Demo event | La Niña-driven HIGH sea-level anomalies 2020–22 (real, in dataset). In the western tropical Pacific El Niño years (2015–16) produce sea-level DROPS of 20–30 cm [WIDLANSKY-2014] — triggers fire on highs only, so param-sweep eligibility validates against 2020–22 |
 | Production path note | Annual aggregation for prototype; the source is monthly and Plan 3 (keeper) may replay monthly readings for a more realistic demo; production ingests monthly PSMSL/NOAA tide-gauge readings (documented in README) |
 
 ## 7. Mock vs real (submission honesty table)

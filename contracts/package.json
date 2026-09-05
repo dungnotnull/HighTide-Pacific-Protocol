@@ -9,6 +9,11 @@
     "node": "hardhat node",
     "deploy:local": "hardhat run scripts/deploy.ts --network hardhat",
     "deploy:base": "hardhat run scripts/deploy.ts --network baseSepolia",
+    "demo:node": "hardhat node",
+    "demo:deploy": "hardhat run scripts/deploy.ts --network localhost",
+    "demo:fund": "hardhat run scripts/keeper/fund.ts --network localhost",
+    "demo:lanina": "hardhat run scripts/keeper/lanina.ts --network localhost",
+    "demo:attack": "hardhat run scripts/keeper/attack.ts --network localhost",
     "clean": "hardhat clean"
   },
   "devDependencies": {

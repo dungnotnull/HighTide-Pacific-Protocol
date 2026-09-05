@@ -11,6 +11,13 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: { chainId: 31337 },
+    localhost: {
+      url: process.env.LOCAL_RPC ?? "http://127.0.0.1:8545",
+      accounts: {
+        mnemonic:
+          "test test test test test test test test test test test junk",
+      },
+    },
     baseSepolia: {
       url: process.env.BASE_SEPOLIA_RPC ?? "https://sepolia.base.org",
       accounts: process.env.DEPLOYER_PK ? [process.env.DEPLOYER_PK] : [],

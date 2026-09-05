@@ -44,3 +44,22 @@ keeper and dashboard. Base Sepolia: `npm run deploy:base` with
 Test tokens on a public testnet only. The oracle is a single registered
 signer for the demo; the production path is a decentralized oracle
 network (e.g. Chainlink) - see the project README's mock-vs-real table.
+
+## One-command demo (the video scenario)
+
+Terminal 1 - the chain (leave running):
+
+    npm run demo:node
+
+Terminal 2:
+
+    npm run demo:deploy   # deploys + configures 13 countries + anchors hashes
+    npm run demo:fund     # donor funds the pool: 10,000,000 HTD
+    npm run demo:lanina   # replay Tuvalu 2020-2022 (real La Nina readings):
+                          #   3 TRIGGERED events, payouts to Tuvalu's wallet
+    npm run demo:attack   # resubmit 2022 -> BLOCKED (ReadingAlreadyEvaluated)
+
+Expected end state: Tuvalu's demo wallet holds 3,677,648 HTD
+(1,414,480 + 848,688 + 1,414,480 - exactly the Python backtest amounts).
+The test suite's E2E test (`test/e2e.test.ts`) asserts the same end state
+for Tuvalu and Samoa on every run.

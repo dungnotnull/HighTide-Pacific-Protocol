@@ -6,6 +6,7 @@ import Part2Chart1 from "@/components/sections/part2/Chart1";
 import { BackToTop } from "@/components/ui/BackToTop";
 import Part2Chart2V2 from "@/components/sections/part2/Chart2v2";
 import IndicatorsHub from "@/components/indicators/page";
+import { ProtocolSection } from "@/components/sections/protocol/ProtocolSection";
 
 const MARKS = [
   { id: "closing", label: "closing" },
@@ -13,6 +14,7 @@ const MARKS = [
   { id: "indicators", label: "indicators" },
   { id: "cause", label: "the reasons why" },
   { id: "part1-chart2", label: "sea status" },
+  { id: "protocol", label: "the protocol" },
   { id: "intro", label: "intro" },
 ];
 
@@ -34,6 +36,7 @@ export default function Home() {
       {/* <Part2Chart1 /> */}
       <IndicatorsHub />
       <Part2Chart2V2 />
+      <ProtocolSection />
 
       <footer
         id="closing"

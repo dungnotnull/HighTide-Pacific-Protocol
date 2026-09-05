@@ -8,7 +8,7 @@
   2025
  ],
  "scaling_factor": 1000000,
- "k": 1.0,
+ "k": 2.0,
  "n_consecutive": 1,
  "countries": {
   "CK": {
@@ -19,7 +19,7 @@
    "intercept_scaled": 16715983,
    "slope_scaled": -8005,
    "sigma_scaled": 353633,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "FJ": {
@@ -30,7 +30,7 @@
    "intercept_scaled": -118240599,
    "slope_scaled": 59183,
    "sigma_scaled": 341044,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "FM": {
@@ -41,7 +41,7 @@
    "intercept_scaled": -86896425,
    "slope_scaled": 43653,
    "sigma_scaled": 412912,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "KI": {
@@ -52,7 +52,7 @@
    "intercept_scaled": -91265997,
    "slope_scaled": 45675,
    "sigma_scaled": 328123,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "MH": {
@@ -63,7 +63,7 @@
    "intercept_scaled": -92043579,
    "slope_scaled": 46123,
    "sigma_scaled": 327607,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "NR": {
@@ -74,7 +74,7 @@
    "intercept_scaled": -93490678,
    "slope_scaled": 46809,
    "sigma_scaled": 327443,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "NU": {
@@ -85,7 +85,7 @@
    "intercept_scaled": -100453507,
    "slope_scaled": 50344,
    "sigma_scaled": 278811,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "PW": {
@@ -96,7 +96,7 @@
    "intercept_scaled": -225771644,
    "slope_scaled": 112822,
    "sigma_scaled": 651662,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "SB": {
@@ -107,7 +107,7 @@
    "intercept_scaled": -151953485,
    "slope_scaled": 76033,
    "sigma_scaled": 333614,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "TO": {
@@ -118,7 +118,7 @@
    "intercept_scaled": -146273318,
    "slope_scaled": 73129,
    "sigma_scaled": 334644,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "TV": {
@@ -129,7 +129,7 @@
    "intercept_scaled": -23771579,
    "slope_scaled": 12126,
    "sigma_scaled": 239830,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "VU": {
@@ -140,7 +140,7 @@
    "intercept_scaled": -115206019,
    "slope_scaled": 57606,
    "sigma_scaled": 307947,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   },
   "WS": {
@@ -151,7 +151,7 @@
    "intercept_scaled": 26722932,
    "slope_scaled": -13019,
    "sigma_scaled": 318538,
-   "k": 1.0,
+   "k": 2.0,
    "n_consecutive": 1
   }
  },

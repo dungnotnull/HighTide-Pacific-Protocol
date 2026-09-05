@@ -13,7 +13,7 @@ def main():
     report = outputs["backtest_report"]
     print("Chosen params: k =", report["k"], "| N =", report["n_consecutive"])
     print("Events:", report["summary"]["total_events"])
-    print("El Nino window events:", report["summary"]["el_nino_window_events"])
+    print("ENSO window events:", report["summary"]["enso_window_events"])
     print("Hypothetical payouts (USD):", report["summary"]["total_payout_usd"])
     for ev in report["events"]:
         print(

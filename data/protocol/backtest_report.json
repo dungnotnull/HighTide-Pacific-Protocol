@@ -1,5 +1,5 @@
 {
- "k": 1.0,
+ "k": 2.0,
  "n_consecutive": 1,
  "mock_pool_usd": 10000000,
  "events": [
@@ -24,106 +24,6 @@
    "payout_usd": 1387570.0
   },
   {
-   "iso2": "CK",
-   "name": "Cook Islands",
-   "start_year": 2023,
-   "end_year": 2023,
-   "peak_z": 1.902,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.138757,
-   "payout_usd": 416271.0
-  },
-  {
-   "iso2": "CK",
-   "name": "Cook Islands",
-   "start_year": 2024,
-   "end_year": 2024,
-   "peak_z": 1.4103,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.138757,
-   "payout_usd": 416271.0
-  },
-  {
-   "iso2": "FJ",
-   "name": "Fiji",
-   "start_year": 2022,
-   "end_year": 2022,
-   "peak_z": 1.5283,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.029725,
-   "payout_usd": 89175.0
-  },
-  {
-   "iso2": "FM",
-   "name": "Federated States of Micronesia",
-   "start_year": 2022,
-   "end_year": 2022,
-   "peak_z": 1.1952,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.081235,
-   "payout_usd": 243705.0
-  },
-  {
-   "iso2": "KI",
-   "name": "Kiribati",
-   "start_year": 2018,
-   "end_year": 2018,
-   "peak_z": 1.4374,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.021049,
-   "payout_usd": 63147.0
-  },
-  {
-   "iso2": "KI",
-   "name": "Kiribati",
-   "start_year": 2019,
-   "end_year": 2019,
-   "peak_z": 1.2455,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.021049,
-   "payout_usd": 63147.0
-  },
-  {
-   "iso2": "NR",
-   "name": "Nauru",
-   "start_year": 2018,
-   "end_year": 2018,
-   "peak_z": 1.893,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.062726,
-   "payout_usd": 188178.0
-  },
-  {
-   "iso2": "NR",
-   "name": "Nauru",
-   "start_year": 2019,
-   "end_year": 2019,
-   "peak_z": 1.1401,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.062726,
-   "payout_usd": 188178.0
-  },
-  {
-   "iso2": "NU",
-   "name": "Niue",
-   "start_year": 2022,
-   "end_year": 2022,
-   "peak_z": 1.3026,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.090512,
-   "payout_usd": 271536.0
-  },
-  {
-   "iso2": "SB",
-   "name": "Solomon Islands",
-   "start_year": 2022,
-   "end_year": 2022,
-   "peak_z": 1.3957,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.108858,
-   "payout_usd": 326574.0
-  },
-  {
    "iso2": "TV",
    "name": "Tuvalu",
    "start_year": 2018,
@@ -132,16 +32,6 @@
    "tier_payout_fraction": 1.0,
    "allocation_weight": 0.141448,
    "payout_usd": 1414480.0
-  },
-  {
-   "iso2": "TV",
-   "name": "Tuvalu",
-   "start_year": 2019,
-   "end_year": 2019,
-   "peak_z": 1.6848,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.141448,
-   "payout_usd": 424344.0
   },
   {
    "iso2": "TV",
@@ -174,26 +64,6 @@
    "payout_usd": 1414480.0
   },
   {
-   "iso2": "TV",
-   "name": "Tuvalu",
-   "start_year": 2023,
-   "end_year": 2023,
-   "peak_z": 1.3645,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.141448,
-   "payout_usd": 424344.0
-  },
-  {
-   "iso2": "TV",
-   "name": "Tuvalu",
-   "start_year": 2025,
-   "end_year": 2025,
-   "peak_z": 1.9764,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.141448,
-   "payout_usd": 424344.0
-  },
-  {
    "iso2": "VU",
    "name": "Vanuatu",
    "start_year": 2022,
@@ -202,26 +72,6 @@
    "tier_payout_fraction": 0.6,
    "allocation_weight": 0.068866,
    "payout_usd": 413196.0
-  },
-  {
-   "iso2": "WS",
-   "name": "Samoa",
-   "start_year": 2017,
-   "end_year": 2017,
-   "peak_z": 1.3116,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.158913,
-   "payout_usd": 476739.0
-  },
-  {
-   "iso2": "WS",
-   "name": "Samoa",
-   "start_year": 2018,
-   "end_year": 2018,
-   "peak_z": 1.8864,
-   "tier_payout_fraction": 0.3,
-   "allocation_weight": 0.158913,
-   "payout_usd": 476739.0
   },
   {
    "iso2": "WS",
@@ -285,20 +135,18 @@
   }
  ],
  "summary": {
-  "total_events": 28,
+  "total_events": 13,
   "events_by_end_year": {
-   "2017": 1,
-   "2018": 4,
-   "2019": 4,
+   "2018": 1,
+   "2019": 1,
    "2020": 2,
    "2021": 3,
-   "2022": 8,
-   "2023": 3,
-   "2024": 1,
-   "2025": 2
+   "2022": 4,
+   "2023": 1,
+   "2025": 1
   },
-  "el_nino_window_events": 13,
-  "total_payout_usd": 19210300.0
+  "enso_window_events": 9,
+  "total_payout_usd": 14717608.0
  },
  "citations": {
   "trigger_design": [

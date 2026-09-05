@@ -102,22 +102,23 @@ def test_select_params_falls_back_when_too_few_events():
 
 
 def test_select_params_picks_most_conservative_when_eligible():
-    """5 countries x 2-year spikes in 2015-2016 satisfy eligibility at
-    the most conservative (k=2.0, N=2), so it must be chosen first.
+    """5 countries x 2-year spikes in 2021-2022 (documented La Nina high
+    years) satisfy eligibility at the most conservative (k=2.0, N=2),
+    so it must be chosen first.
 
-    Seeds 100/103/104/107/110 were selected (from a scan of 100-159)
-    because each fires exactly one clean 2016 event at (2.0, 2): seeds
-    101 and 102 have calibration noise that drags spike z below k.
+    Seeds 102/104/111/114/115 were selected (from a scan of 100-159)
+    because each fires exactly one clean 2022 event at (2.0, 2): e.g.
+    seeds 100 and 103 have calibration noise that drags spike z below k.
     """
     countries = {}
-    for code, seed in zip(["TV", "FJ", "WS", "KI", "SB"], [100, 103, 104, 107, 110]):
+    for code, seed in zip(["TV", "FJ", "WS", "KI", "SB"], [102, 104, 111, 114, 115]):
         rng = np.random.default_rng(seed)
         noise = 0.001
         years = CAL_YEARS + EVAL_YEARS
         values = []
         for y in years:
             v = 0.05 + rng.normal(0, noise)
-            if y in (2015, 2016):
+            if y in (2021, 2022):
                 v += 3.5 * noise
             values.append(v)
         countries[code] = {"name": code, "years": years, "values": values}

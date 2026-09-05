@@ -13,11 +13,13 @@ MOCK_POOL_USD = 10_000_000
 # Most conservative first.
 PARAM_GRID = [(2.0, 2), (2.0, 1), (1.5, 2), (1.5, 1), (1.0, 2), (1.0, 1)]
 
-# Documented ENSO episodes overlapping the evaluation window.
-EL_NINO_YEARS = {2015, 2016, 2020, 2021, 2022}
+# Documented ENSO episode years overlapping the evaluation window.
+ENSO_YEARS = {2015, 2016, 2020, 2021, 2022}
 
-# Strongest documented El Nino spike in the window.
-STRONG_EL_NINO_YEARS = {2015, 2016}
+# In the western tropical Pacific, HIGH sea-level anomalies coincide with
+# La Nina (2020-2022); El Nino years (2015-2016) produce drops
+# (Widlansky et al. 2014, Journal of Climate -> [WIDLANSKY-2014]).
+STRONG_ENSO_HIGH_YEARS = {2020, 2021, 2022}
 
 
 def _slice_series(country, years):
@@ -74,7 +76,7 @@ def run_backtest(
     by_year_counts = {}
     for ev in events:
         by_year_counts[ev["end_year"]] = by_year_counts.get(ev["end_year"], 0) + 1
-    el_nino = sum(1 for ev in events if ev["end_year"] in EL_NINO_YEARS)
+    el_nino = sum(1 for ev in events if ev["end_year"] in ENSO_YEARS)
     return {
         "k": k,
         "n_consecutive": n_consecutive,
@@ -83,7 +85,7 @@ def run_backtest(
         "summary": {
             "total_events": len(events),
             "events_by_end_year": dict(sorted(by_year_counts.items())),
-            "el_nino_window_events": el_nino,
+            "enso_window_events": el_nino,
             "total_payout_usd": round(
                 sum(ev["payout_usd"] for ev in events), 2
             ),
@@ -95,7 +97,7 @@ def select_params(countries, calibration_years, evaluation_years, weights):
     """Pick the most conservative (k, N) that keeps the protocol alive.
 
     Eligibility: at least 5 events total and at least 2 events ending in
-    2015/2016 (the strongest documented El Nino spike in the window).
+    the documented La Nina high years 2020-2022.
     Falls back to the most sensitive (1.0, 1) if nothing qualifies.
     """
     for k, n in PARAM_GRID:
@@ -103,13 +105,13 @@ def select_params(countries, calibration_years, evaluation_years, weights):
             countries, calibration_years, evaluation_years, k, n, weights
         )
         s = report["summary"]
-        if s["total_events"] >= 5 and _strong_el_nino(s):
+        if s["total_events"] >= 5 and _documented_high_years(s):
             return (k, n)
     return (1.0, 1)
 
 
-def _strong_el_nino(summary):
+def _documented_high_years(summary):
     by_year = summary["events_by_end_year"]
     return (
-        sum(by_year.get(y, 0) for y in STRONG_EL_NINO_YEARS) >= 2
+        sum(by_year.get(y, 0) for y in STRONG_ENSO_HIGH_YEARS) >= 2
     )

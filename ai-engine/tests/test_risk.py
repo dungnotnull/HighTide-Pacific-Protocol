@@ -1,5 +1,3 @@
-import numpy as np
-
 from hightide.risk import compute_risk, exceedance_prob
 
 
@@ -36,3 +34,15 @@ def test_compute_risk_weights_sum_to_one_and_rank_correctly():
     assert by_code["TV"]["allocation_weight"] > by_code["FJ"]["allocation_weight"]
     assert by_code["FJ"]["allocation_weight"] > by_code["WS"]["allocation_weight"]
     assert all(0.0 <= c["risk_index"] <= 1.0 for c in scored)
+
+
+def test_compute_risk_equal_inputs_allocate_equally():
+    countries = [
+        _country("TV", trend_mm_yr=4.0, exceed_prob=0.20),
+        _country("FJ", trend_mm_yr=4.0, exceed_prob=0.20),
+        _country("WS", trend_mm_yr=4.0, exceed_prob=0.20),
+    ]
+    scored = compute_risk(countries)
+    weights = [c["allocation_weight"] for c in scored]
+    assert abs(sum(weights) - 1.0) < 1e-5
+    assert all(abs(w - 1.0 / 3.0) < 1e-5 for w in weights)

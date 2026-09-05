@@ -37,7 +37,11 @@ def compute_risk(countries):
 
     indices = [0.5 * t + 0.5 * p for t, p in zip(trend_n, prob_n)]
     total = sum(indices)
-    weights = [i / total for i in indices] if total > 0 else indices
+    if total > 0:
+        weights = [i / total for i in indices]
+    else:
+        # Uniform risk means equal allocation, not zero allocation.
+        weights = [1.0 / len(indices)] * len(indices)
 
     scored = []
     for c, idx, w in zip(countries, indices, weights):

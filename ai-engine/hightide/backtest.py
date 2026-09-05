@@ -16,6 +16,9 @@ PARAM_GRID = [(2.0, 2), (2.0, 1), (1.5, 2), (1.5, 1), (1.0, 2), (1.0, 1)]
 # Documented ENSO episodes overlapping the evaluation window.
 EL_NINO_YEARS = {2015, 2016, 2020, 2021, 2022}
 
+# Strongest documented El Nino spike in the window.
+STRONG_EL_NINO_YEARS = {2015, 2016}
+
 
 def _slice_series(country, years):
     by_year = dict(zip(country["years"], country["values"]))
@@ -63,6 +66,9 @@ def run_backtest(
                         "payout_usd": round(fraction * weight * MOCK_POOL_USD, 2),
                     }
                 )
+                # Fresh state so the next event's peak_z starts clean;
+                # best_z survives only within one event's streak.
+                state = TriggerState()
                 streak_start = None
 
     by_year_counts = {}
@@ -104,4 +110,6 @@ def select_params(countries, calibration_years, evaluation_years, weights):
 
 def _strong_el_nino(summary):
     by_year = summary["events_by_end_year"]
-    return (by_year.get(2015, 0) + by_year.get(2016, 0)) >= 2
+    return (
+        sum(by_year.get(y, 0) for y in STRONG_EL_NINO_YEARS) >= 2
+    )

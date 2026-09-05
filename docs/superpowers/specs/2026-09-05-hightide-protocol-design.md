@@ -59,9 +59,8 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 
 ### 5.1 Smart contracts (`/contracts`, Hardhat + OpenZeppelin)
 - **MockFundToken (ERC20):** stand-in for fund currency on testnet.
-- **ClimateDataRegistry:** anchors dataset hashes (source, indicator, period, uploader signature); emits audit events.
-- **LossDamagePool:** holds token balances; per-country allocations set from AI weights (owner-governed via signed AI attestation hash).
-- **ParametricPayout:** verifies oracle EIP-712 signatures; evaluates trigger thresholds; tiered payout; one payout per event id (anti-double-count); pro-rata if pool short.
+- **ClimateDataRegistry:** anchors dataset/output hashes (source, indicator, period); emits audit events.
+- **HighTidePool** (merges the earlier LossDamagePool + ParametricPayout design — one custody+trigger contract reduces cross-contract calls): holds token balances; per-country params + allocation weights loaded from `data/protocol/trigger_params.json` / `risk_allocation.json` (1e6 fixed-point); verifies oracle EIP-712 signatures; evaluates trend-adjusted thresholds with the N-consecutive state machine mirroring `hightide/stats.py`; tiered payout (z>=3: 100%, >=2: 60%, >=1: 30% of allocation at the reference pool); one payout per event id and one evaluation per (country, year) — anti-double-count; pro-rata when pool short with outstanding remainder tracked.
 
 ### 5.2 AI Engine (`/ai-engine`, Python)
 - **Forecast:** per-country sea-level trend + prediction intervals (80/95%) on the 30-year trend series (1993–2023, meters) — statsmodels statistical forecasting, not deep learning (scientific honesty: ~31 annual points per country). A separate forecast of the trigger series feeds the warning-level exceedance probability.

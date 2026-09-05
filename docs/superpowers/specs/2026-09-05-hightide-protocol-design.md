@@ -64,9 +64,9 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 - **ParametricPayout:** verifies oracle EIP-712 signatures; evaluates trigger thresholds; tiered payout; one payout per event id (anti-double-count); pro-rata if pool short.
 
 ### 5.2 AI Engine (`/ai-engine`, Python)
-- **Forecast:** per-country sea-level trend + prediction intervals (80/95%) — statsmodels statistical forecasting, not deep learning (scientific honesty: ~30 annual points per country).
+- **Forecast:** per-country sea-level trend + prediction intervals (80/95%) — statsmodels statistical forecasting, not deep learning (scientific honesty: 21 annual points per country).
 - **Risk scoring:** exceedance probability within 12-month horizon -> normalized risk index -> pool allocation weights. Output JSON hash-anchored via ClimateDataRegistry.
-- **Backtest:** replay protocol 1993–2023 against real data; report trigger dates, tiers, hypothetical payouts; validate against documented El Niño episodes (1997–98, 2015–16, 2020–22). This is the credibility centerpiece.
+- **Backtest:** replay protocol over 2015–2025 against real data (calibration on 2005–2014); report trigger dates, tiers, hypothetical payouts; validate against documented El Niño episodes (2015–16, 2020–22). This is the credibility centerpiece.
 
 ### 5.3 Keeper / Oracle (`/keeper`, TypeScript)
 - Holds oracle key; replays real PDH series as time-accelerated signed readings; exposes a "run demo scenario" entry point (El Niño 2015–16).
@@ -80,11 +80,14 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 
 | Item | Definition |
 |---|---|
-| Baseline | Per-country mean sea level 1993–2023 (real PDH data) |
+| Data basis | `sea_level.json`: 13 PICs, annual relative sea level, 2005–2025 (n=21 per country) |
+| Baseline (calibration window) | Per-country mean + sigma over 2005–2014 |
 | Trigger threshold | Reading >= baseline + k·sigma (initial k=2; backtest may revise, final value documented in README) |
 | Persistence | N=2 consecutive readings above threshold (anti-noise) |
 | Payout tiers | 1–2 sigma: 30% of allocation; 2–3 sigma: 60%; >3 sigma: 100% |
+| Backtest window | 2015–2025 (excludes calibration window, avoids threshold contamination) |
 | Demo event | El Niño 2015–16 sea-level spike (real, present in dataset) |
+| Production path note | Annual PDH data for prototype; production ingests monthly PSMSL/NOAA tide-gauge readings (documented in README) |
 
 ## 7. Mock vs real (submission honesty table)
 
@@ -99,7 +102,7 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
 - **Pool insufficiency:** pro-rata payout; remainder owed tracked in contract state.
 - **Missing readings:** trigger evaluation pauses until N consecutive readings resume.
 - **Oracle compromise:** production path documented (multi-oracle quorum + Chainlink adapter); demo uses single registered oracle.
-- **Data gaps per country:** risk engine requires minimum history (e.g. >= 15 years); countries below threshold excluded from allocation.
+- **Data gaps per country:** risk engine requires minimum history (>= 15 annual observations); countries below threshold excluded from allocation (all 13 current countries qualify with n=21).
 
 ## 9. Testing strategy
 - **Contracts (Hardhat/Chai):** signature acceptance/rejection, trigger on/off, tier math, replay rejection, pro-rata math.

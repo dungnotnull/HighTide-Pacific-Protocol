@@ -1,0 +1,177 @@
+{
+ "calibration_window": [
+  2005,
+  2014
+ ],
+ "evaluation_window": [
+  2015,
+  2025
+ ],
+ "scaling_factor": 1000000,
+ "k": 1.0,
+ "n_consecutive": 1,
+ "countries": {
+  "CK": {
+   "name": "Cook Islands",
+   "intercept": 16.715983,
+   "slope": -0.008005,
+   "sigma": 0.353633,
+   "intercept_scaled": 16715983,
+   "slope_scaled": -8005,
+   "sigma_scaled": 353633,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "FJ": {
+   "name": "Fiji",
+   "intercept": -118.240599,
+   "slope": 0.059183,
+   "sigma": 0.341044,
+   "intercept_scaled": -118240599,
+   "slope_scaled": 59183,
+   "sigma_scaled": 341044,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "FM": {
+   "name": "Federated States of Micronesia",
+   "intercept": -86.896425,
+   "slope": 0.043653,
+   "sigma": 0.412912,
+   "intercept_scaled": -86896425,
+   "slope_scaled": 43653,
+   "sigma_scaled": 412912,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "KI": {
+   "name": "Kiribati",
+   "intercept": -91.265997,
+   "slope": 0.045675,
+   "sigma": 0.328123,
+   "intercept_scaled": -91265997,
+   "slope_scaled": 45675,
+   "sigma_scaled": 328123,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "MH": {
+   "name": "Republic of Marshall Islands",
+   "intercept": -92.043579,
+   "slope": 0.046123,
+   "sigma": 0.327607,
+   "intercept_scaled": -92043579,
+   "slope_scaled": 46123,
+   "sigma_scaled": 327607,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "NR": {
+   "name": "Nauru",
+   "intercept": -93.490678,
+   "slope": 0.046809,
+   "sigma": 0.327443,
+   "intercept_scaled": -93490678,
+   "slope_scaled": 46809,
+   "sigma_scaled": 327443,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "NU": {
+   "name": "Niue",
+   "intercept": -100.453507,
+   "slope": 0.050344,
+   "sigma": 0.278811,
+   "intercept_scaled": -100453507,
+   "slope_scaled": 50344,
+   "sigma_scaled": 278811,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "PW": {
+   "name": "Palau",
+   "intercept": -225.771644,
+   "slope": 0.112822,
+   "sigma": 0.651662,
+   "intercept_scaled": -225771644,
+   "slope_scaled": 112822,
+   "sigma_scaled": 651662,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "SB": {
+   "name": "Solomon Islands",
+   "intercept": -151.953485,
+   "slope": 0.076033,
+   "sigma": 0.333614,
+   "intercept_scaled": -151953485,
+   "slope_scaled": 76033,
+   "sigma_scaled": 333614,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "TO": {
+   "name": "Tonga",
+   "intercept": -146.273318,
+   "slope": 0.073129,
+   "sigma": 0.334644,
+   "intercept_scaled": -146273318,
+   "slope_scaled": 73129,
+   "sigma_scaled": 334644,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "TV": {
+   "name": "Tuvalu",
+   "intercept": -23.771579,
+   "slope": 0.012126,
+   "sigma": 0.23983,
+   "intercept_scaled": -23771579,
+   "slope_scaled": 12126,
+   "sigma_scaled": 239830,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "VU": {
+   "name": "Vanuatu",
+   "intercept": -115.206019,
+   "slope": 0.057606,
+   "sigma": 0.307947,
+   "intercept_scaled": -115206019,
+   "slope_scaled": 57606,
+   "sigma_scaled": 307947,
+   "k": 1.0,
+   "n_consecutive": 1
+  },
+  "WS": {
+   "name": "Samoa",
+   "intercept": 26.722932,
+   "slope": -0.013019,
+   "sigma": 0.318538,
+   "intercept_scaled": 26722932,
+   "slope_scaled": -13019,
+   "sigma_scaled": 318538,
+   "k": 1.0,
+   "n_consecutive": 1
+  }
+ },
+ "citations": {
+  "trigger_design": [
+   "IPCC6-CH9",
+   "MERRIFIELD-2011",
+   "WIDLANSKY-2014",
+   "WIDLANSKY-2015",
+   "PCRAFI",
+   "ARC",
+   "NOAA-SLT",
+   "PSMSL"
+  ],
+  "data_sources": [
+   "PDH-SEA",
+   "NOAA-SLT",
+   "PSMSL",
+   "NASA-SL",
+   "WB-CCKP"
+  ]
+ }
+}

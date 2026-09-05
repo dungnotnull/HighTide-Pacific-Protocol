@@ -1,0 +1,125 @@
+{
+ "method": "risk_index = 0.5*norm(trend_mm_yr) + 0.5*norm(exceedance_prob); weights = index/sum",
+ "countries": {
+  "CK": {
+   "iso2": "CK",
+   "name": "Cook Islands",
+   "trend_mm_yr": 4.637,
+   "exceedance_prob": 0.631846,
+   "risk_index": 0.668409,
+   "allocation_weight": 0.138757
+  },
+  "FJ": {
+   "iso2": "FJ",
+   "name": "Fiji",
+   "trend_mm_yr": 4.153,
+   "exceedance_prob": 0.035154,
+   "risk_index": 0.143191,
+   "allocation_weight": 0.029725
+  },
+  "FM": {
+   "iso2": "FM",
+   "name": "Federated States of Micronesia",
+   "trend_mm_yr": 4.637,
+   "exceedance_prob": 0.142133,
+   "risk_index": 0.391319,
+   "allocation_weight": 0.081235
+  },
+  "KI": {
+   "iso2": "KI",
+   "name": "Kiribati",
+   "trend_mm_yr": 3.911,
+   "exceedance_prob": 0.127059,
+   "risk_index": 0.101394,
+   "allocation_weight": 0.021049
+  },
+  "MH": {
+   "iso2": "MH",
+   "name": "Republic of Marshall Islands",
+   "trend_mm_yr": 3.831,
+   "exceedance_prob": 0.112976,
+   "risk_index": 0.062418,
+   "allocation_weight": 0.012958
+  },
+  "NR": {
+   "iso2": "NR",
+   "name": "Nauru",
+   "trend_mm_yr": 4.476,
+   "exceedance_prob": 0.094843,
+   "risk_index": 0.302158,
+   "allocation_weight": 0.062726
+  },
+  "NU": {
+   "iso2": "NU",
+   "name": "Niue",
+   "trend_mm_yr": 4.919,
+   "exceedance_prob": 0.027942,
+   "risk_index": 0.436009,
+   "allocation_weight": 0.090512
+  },
+  "PW": {
+   "iso2": "PW",
+   "name": "Palau",
+   "trend_mm_yr": 4.839,
+   "exceedance_prob": 0.008023,
+   "risk_index": 0.393731,
+   "allocation_weight": 0.081736
+  },
+  "SB": {
+   "iso2": "SB",
+   "name": "Solomon Islands",
+   "trend_mm_yr": 5.121,
+   "exceedance_prob": 0.045755,
+   "risk_index": 0.524383,
+   "allocation_weight": 0.108858
+  },
+  "TO": {
+   "iso2": "TO",
+   "name": "Tonga",
+   "trend_mm_yr": 3.871,
+   "exceedance_prob": 0.002662,
+   "risk_index": 0.015504,
+   "allocation_weight": 0.003218
+  },
+  "TV": {
+   "iso2": "TV",
+   "name": "Tuvalu",
+   "trend_mm_yr": 4.395,
+   "exceedance_prob": 0.820531,
+   "risk_index": 0.681372,
+   "allocation_weight": 0.141448
+  },
+  "VU": {
+   "iso2": "VU",
+   "name": "Vanuatu",
+   "trend_mm_yr": 4.597,
+   "exceedance_prob": 0.064227,
+   "risk_index": 0.331734,
+   "allocation_weight": 0.068866
+  },
+  "WS": {
+   "iso2": "WS",
+   "name": "Samoa",
+   "trend_mm_yr": 4.516,
+   "exceedance_prob": 0.886333,
+   "risk_index": 0.765504,
+   "allocation_weight": 0.158913
+  }
+ },
+ "citations": {
+  "risk_allocation": [
+   "WB-CCKP",
+   "WIDLANSKY-2015",
+   "OWID-CO2",
+   "OWID-CO2-COUNTRY",
+   "GCB",
+   "PCRIC"
+  ],
+  "loss_and_damage_framing": [
+   "UNFCCC-FRLD",
+   "COP28-1CP28",
+   "SNLD",
+   "IPCC6-CH9"
+  ]
+ }
+}

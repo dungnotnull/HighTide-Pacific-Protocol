@@ -1,222 +1,117 @@
-# Tides of Debt: A Pacific Climate Story
+# HighTide Protocol
 
-**Pacific Dataviz Challenge 2025 - Interactive Category Entry**
+**An AI-forecasted, blockchain-triggered Loss & Damage fund for Pacific Island Countries.**
 
-An interactive scrollytelling data visualization exploring the disproportionate climate impact on Pacific Island Countries (PICs) despite their minimal contribution to global emissions.
+Entry for the **IEEE ClimateChain Global Hackathon 2026 — Track 1: Carbon Markets & Emissions Transparency**.
 
-## Overview
+Pacific Island Countries emit the least and lose the most. HighTide turns that story into a mechanism: a parametric fund whose payout thresholds are forecasted and calibrated by an AI engine on real sea-level data, and whose disbursements execute automatically on a public blockchain — each trigger paid exactly once, immune to double-counting.
 
-This single-page web application tells the story of how Pacific Island nations—responsible for the lowest greenhouse gas emissions—face the most severe consequences of climate change. Through interactive data visualizations and scroll-driven storytelling, visitors experience the causal chain from emissions to sea-level rise to agricultural consequences.
+## How it works
 
-**Thesis:** *The tide that keeps rising has already been paid for—just not by the people it's rising on.*
-
-### Narrative Structure
-
-The story unfolds across four main sections:
-
-1. **Hero** – Opening thesis statement with ambient visual elements
-2. **Cause** – CO₂ emissions & temperature trends: contrasting PICs against top global emitters
-3. **Reality** – Sea level rise and shoreline displacement across the Pacific
-4. **Consequence** – Impact on agriculture and basic needs (WASH: Water, Sanitation, and Hygiene)
-5. **The Climate Triangle** – A 3D composition analyzing the intersection of emissions, sea level rise, and clean water access
-
-## Features
-
-- **Scroll-driven storytelling** with Intersection Observer-based step triggers
-- **Interactive D3.js & Plotly.js visualizations** including:
-  - World map with country emissions bubbles
-  - Per-capita CO₂ emissions comparison chart
-  - Sea level trend visualization with Pacific average
-  - Clean Water & Sanitation (WASH) rankings and dot plots
-  - 3D Climate Triangle scatter plot
-- **Country modal** with detailed year-over-year data (click any country on the map)
-- **Year-by-year animation** with auto-play from 1850→2025
-- **Responsive design** optimized for desktop and mobile viewing
-- **Accessibility-focused** with ARIA labels and keyboard navigation
-- **Static export** for fast, serverless deployment on Vercel
-
-## Tech Stack
-
-- **Framework:** Next.js 15.5+ (React 19) with App Router
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4 with custom design tokens
-- **Visualization:** D3.js v7 for custom charts, Plotly.js (via react-plotly.js) for 3D/complex scatter plots, TopoJSON for map data
-- **Fonts:** Fraunces (display), IBM Plex Mono (monospace), Public Sans (body)
-- **Deployment:** Vercel (static export)
-
-## Project Structure
+Three layers, each independently tested:
 
 ```
-/
-├── app/
-│   ├── layout.tsx          # Root layout with fonts
-│   ├── page.tsx            # Single-page entry point
-│   └── globals.css         # Global styles and design tokens
-├── components/
-│   ├── sections/           # Story sections
-│   │   ├── Hero.tsx
-│   │   ├── Cause.tsx
-│   │   ├── CauseMap.tsx
-│   │   ├── Result.tsx
-│   │   └── [other sections]
-│   ├── charts/            # Reusable chart components
-│   ├── ui/                # UI components (modal, scroll rail, etc.)
-│   └── lib/               # Utility functions and hooks
-├── data/                  # JSON data files (cleaned, ready to use)
-│   ├── ghg_per_capita.json
-│   ├── temperature_anomaly.json
-│   ├── sea_level.json
-│   └── SOURCES.md         # Data source citations
-├── hooks/                 # Custom React hooks
-├── lib/                   # Helper functions
-└── types/                 # TypeScript type definitions
+  AI ENGINE (Python)            SMART CONTRACTS (Solidity / Hardhat)
+  forecast + risk weights  -->  ClimateDataRegistry (data-hash provenance)
+  trend-adjusted thresholds     HighTidePool (custody + parametric trigger,
+  backtest 2015-2025            EIP-712 oracle verification, anti-replay)
+        |                              ^
+        v                              |
+  KEEPER / ORACLE (TypeScript) -- signed readings on Base Sepolia testnet
+                                       |
+                                       v
+  DASHBOARD (Next.js scrollytelling) -- Acts 1-2: the cause and the reality
+                          Act 3: The Protocol (risk table, backtest timeline,
+                          trigger explainer, LIVE on-chain payout panel)
 ```
 
-## Getting Started
+1. **AI engine** (`ai-engine/`, Python): per-country sea-level trend + forecast with prediction intervals, blended chronic/acute risk scores that set pool allocation weights, and a 2015-2025 backtest of the trigger rule against real Pacific Data Hub data.
+2. **Smart contracts** (`contracts/`, Solidity): an ERC20 fund token, a data-hash registry for provenance, and a combined pool contract that verifies EIP-712-signed oracle readings, evaluates the trigger state machine, pays tiered amounts, and enforces one payout per event.
+3. **Dashboard** (this Next.js app): the existing award-style scrollytelling on emissions and sea level, extended with Act 3 "The Protocol" — risk allocation table, backtest payout timeline, worked trigger example, and a live panel reading the deployed pool state.
 
-### Prerequisites
+## Judging criteria mapping
 
-- Node.js 18+ 
-- npm or yarn
+| Criterion | How HighTide scores |
+|---|---|
+| Climate Impact | Direct disbursement mechanism for UN Loss & Damage — a real COP31 pain point (slow, opaque, contested allocation) |
+| Innovation & Creativity | Climate-justice fintech: historical emissions responsibility becomes automated repayment; distinct from carbon-credit clones |
+| Technical Execution | Three real layers: statistical AI on real data + EIP-712 signed oracle verification on-chain + parametric contracts with anti-replay |
+| Practical Usefulness | The Loss & Damage Fund (pledged ~$700M under UNFCCC) lacks trusted disbursement rails; the backtest proves workable thresholds |
+| Presentation | Scrollytelling dashboard with live on-chain state; demo replays real La Nina readings, pays out, then shows a replay rejected on-chain |
 
-### Installation
+## Results
 
-1. Clone the repository:
+All numbers below come from committed pipeline output (`data/protocol/backtest_report.json`), not hand-written claims.
+
+- Trigger rule: threshold = trend(year) + **k = 2.0 sigma**, **N = 1** consecutive reading(s); tiers 30% / 60% / 100% by anomaly magnitude.
+- Backtest over **2015-2025** (calibration on 2005-2014) fired on **13 country-year events**, of which **9 fall in the 2020-2022 La Nina window** — consistent with the documented ENSO physics for the western tropical Pacific (highs during La Nina, drops during El Nino).
+- Hypothetical payouts at the **$10M/event reference pool** total **$14,717,608** across the 13 events (Cook Islands, Tuvalu, Vanuatu, Samoa).
+- The on-chain replay of the same historical readings reproduces the Python backtest exactly — covered by Hardhat tests including a real-data equivalence check and an end-to-end fund/replay/attack scenario.
+- Test coverage: **20 Hardhat tests** (contracts) and **22 Python tests** (AI engine).
+
+## Quickstart
+
+AI engine (Python 3.11+):
+
 ```bash
-git clone https://github.com/dungnotnull/rawHapri-Pacific-dataviz-storytelling.git
-cd rawHapri-Pacific-dataviz-storytelling
+cd ai-engine
+pip install -r requirements.txt
+pytest                 # 22 tests
+python scripts/run_all.py   # forecast + risk + backtest -> ../data/protocol/*.json
 ```
 
-2. Install dependencies:
+Smart contracts (Node 18+):
+
+```bash
+cd contracts
+npm install
+npx hardhat test       # 20 tests
+npm run demo:node      # terminal 1: local chain
+npm run demo:deploy    # terminal 2: deploy + configure 13 countries + anchor hashes
+npm run demo:fund      # donor funds the pool (10,000,000 HTD)
+npm run demo:lanina    # replay Tuvalu 2020-2022 (real La Nina readings) -> payouts
+npm run demo:attack    # resubmit 2022 -> rejected on-chain (anti-double-count)
+```
+
+Dashboard (Next.js):
+
 ```bash
 npm install
+npm run dev            # http://localhost:3000
 ```
 
-3. Run the development server:
-```bash
-npm run dev
+## Mock vs real
+
+We disclose exactly what is real and what is mocked. Nothing below is overstated.
+
+| Real | Mock (disclosed) |
+|---|---|
+| Pacific Data Hub climate data | Fund currency = test tokens (ERC20) |
+| AI forecasts and thresholds derived from that real data | Oracle = our keeper script replaying recorded history |
+| Contracts deployed on a public testnet | Time acceleration for the demo |
+| Signature verification, anti-replay, on-chain provenance | Single oracle (production path: multi-oracle quorum, documented) |
+
+The Base Sepolia deployment of the contracts is the next step in the submission; until then the contracts run and are fully tested on a local node, and the dashboard's live panel renders the local deployment state.
+
+## Scientific grounding
+
+Every pipeline output JSON carries citation IDs (e.g. `PDH-SEA`, `WIDLANSKY-2014`, `IPCC6-CH9`) that resolve in **`docs/research/REFERENCES.md`** — 27 sources, each verified for title, venue, and working URL. The dashboard renders these as clickable source chips on every protocol panel, so judges can trace each number to its origin.
+
+## Repository layout
+
+```
+ai-engine/         Python: load, forecast, risk, backtest, citations (+ 22 tests)
+contracts/         Solidity: token, registry, pool (+ 20 Hardhat tests, keeper demo scripts)
+components/sections/protocol/   Dashboard Act 3: risk table, backtest timeline,
+                                trigger explainer, live on-chain panel
+data/protocol/     Committed pipeline outputs: trigger_params, risk_allocation,
+                   forecasts, backtest_report (with citation IDs)
+docs/              Design spec, plans, research references, submission drafts
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+## Next steps
 
-### Build for Production
-
-```bash
-npm run build
-npm run start
-```
-
-The static export will be generated in the `out/` directory, ready for deployment.
-
-## Data Sources
-
-All data is sourced from publicly available climate and development databases:
-
-- **CO₂ Emissions:** Pacific Data Hub, Our World in Data
-- **Temperature Anomalies:** World Bank Climate Change Knowledge Portal
-- **Sea Level:** Pacific Data Hub CLIMATE_CHANGE_SEA_INDICATORS
-- **WASH (Water, Sanitation, Hygiene):** WHO/UNICEF Joint Monitoring Programme
-- **Country Coordinates:** PIC countries geographic data
-
-See `data/SOURCES.md` for complete source listings, access dates, and licensing information.
-
-## Design Decisions
-
-### Visual Language
-
-- **Color Palette:**
-  - Ocean tones (`--ocean-deep`, `--ocean-mid`) for backgrounds
-  - Coral (`--coral`) for emissions/alert content
-  - Lagoon (`--lagoon`) for temperature data
-  - Foam (`--foam`) for text on dark backgrounds
-  - Ink (`--ink`) for text on light backgrounds
-
-- **Typography:**
-  - Fraunces: Display headlines (strong character)
-  - IBM Plex Mono: Data labels, code-style elements
-  - Public Sans: Body text, UI elements
-
-### Interaction Patterns
-
-- **Scroll-driven triggers** using Intersection Observer API
-- **Sticky visual panels** with scrolling text steps
-- **Modal detail views** for country-specific exploration
-- **Year animation** with manual step controls
-- **Progress rail** (TideRail) showing scroll position
-
-### Performance Considerations
-
-- Static export for zero server dependency
-- D3.js charts render once on mount with ResizeObserver
-- **Advanced Lazy Loading:** Heavy visualization libraries (like Plotly.js) are dynamically imported and deferred using `IntersectionObserver`, ensuring zero impact on the initial page load and Hero animation.
-- Optimized images with Unsplash CDN
-- CSS-based animations where possible
-
-## Accessibility
-
-- Semantic HTML structure with proper heading hierarchy
-- ARIA labels on interactive elements
-- Keyboard navigation support
-- Focus indicators on interactive elements
-- Text alternatives for all visualizations
-- Sufficient color contrast (WCAG AA compliant)
-
-## Browser Support
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers (iOS Safari 14+, Chrome Mobile)
-
-## Competition Context
-
-This entry was developed for the **Pacific Dataviz Challenge 2025**, organized by the Pacific Community (SPC) and partners. The competition emphasizes:
-
-- Clear storytelling with Pacific data
-- Original design and technical execution
-- Credible data sourcing and methodology
-- Interactive/engaging presentation
-
-Our approach draws inspiration from proven scrollytelling techniques while maintaining a unique visual identity and narrative voice specific to the Pacific climate experience.
-
-## Development Notes
-
-### Adding New Sections
-
-1. Create a new component in `components/sections/`
-2. Add data files to `data/` with entries in `SOURCES.md`
-3. Import and add to the section sequence in `app/page.tsx`
-4. Update scroll marks (MARKS) in `app/page.tsx` for progress rail
-
-### Working with Charts
-
-- Charts use the imperative D3 pattern in `useEffect` with `useRef`
-- Data is passed as props, never fetched inside chart components
-- All charts support empty data states with graceful fallbacks
-- Responsive sizing via shared `useDimensions` hook
-
-### Data Updates
-
-To update with new data:
-1. Ensure JSON structure matches existing types in `types/index.ts`
-2. Replace files in `data/` directory
-3. Update `data/SOURCES.md` with new source information
-4. No component changes required if data shape is preserved
-
-## License
-
-This project is developed for the Pacific Dataviz Challenge. Data sources retain their original licenses as specified in `data/SOURCES.md`.
-
-## Credits
-
-- **Concept & Development:** [Your Name]
-- **Data Sources:** Pacific Data Hub, World Bank CCKP, Our World in Data
-- **Techniques Inspired By:** "Paying the Heaviest of the Carbon Debt Never Incurred" (2025 Pacific Dataviz Challenge Winner)
-
-## Contact
-
-For questions about this entry, please contact me or open an issue on GitHub.
-
----
-
-**Built with Next.js, D3.js, and a commitment to telling Pacific climate stories with integrity and impact.**
+- Deploy the contracts to **Base Sepolia** (user-dependent: funded deployer key) and wire the dashboard's live panel to the testnet addresses.
+- Publish the dashboard on **Vercel** and the repository publicly.
+- Record the demo video per **`docs/submission/demo-video-script.md`**.
+- Submit on Devpost (draft: **`docs/submission/devpost.md`**).

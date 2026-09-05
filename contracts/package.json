@@ -1,0 +1,23 @@
+{
+  "name": "hightide-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HighTide Protocol smart contracts (IEEE ClimateChain 2026)",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.ts --network hardhat",
+    "deploy:base": "hardhat run scripts/deploy.ts --network baseSepolia",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@openzeppelin/contracts": "^5.1.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^17.4.2",
+    "hardhat": "^2.26.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.6.0"
+  }
+}

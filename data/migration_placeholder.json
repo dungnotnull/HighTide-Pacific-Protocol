@@ -1,0 +1,156 @@
+{
+  "_note": "This is fully placeholder data. Replace with actual analysis before submission.",
+  "nodes": [
+    {
+      "id": "Kiribati"
+    },
+    {
+      "id": "Marshall Islands"
+    },
+    {
+      "id": "Federated States of Micronesia"
+    },
+    {
+      "id": "Nauru"
+    },
+    {
+      "id": "Palau"
+    },
+    {
+      "id": "Papua New Guinea"
+    },
+    {
+      "id": "Solomon Islands"
+    },
+    {
+      "id": "Tonga"
+    },
+    {
+      "id": "Tuvalu"
+    },
+    {
+      "id": "Vanuatu"
+    },
+    {
+      "id": "Samoa"
+    },
+    {
+      "id": "Fiji"
+    },
+    {
+      "id": "New Zealand"
+    },
+    {
+      "id": "Australia"
+    },
+    {
+      "id": "United States"
+    }
+  ],
+  "links": [
+    {
+      "source": "Kiribati",
+      "target": "New Zealand",
+      "value": 2500
+    },
+    {
+      "source": "Kiribati",
+      "target": "Australia",
+      "value": 1800
+    },
+    {
+      "source": "Marshall Islands",
+      "target": "United States",
+      "value": 3200
+    },
+    {
+      "source": "Marshall Islands",
+      "target": "New Zealand",
+      "value": 400
+    },
+    {
+      "source": "Federated States of Micronesia",
+      "target": "United States",
+      "value": 2800
+    },
+    {
+      "source": "Federated States of Micronesia",
+      "target": "New Zealand",
+      "value": 500
+    },
+    {
+      "source": "Tuvalu",
+      "target": "New Zealand",
+      "value": 1200
+    },
+    {
+      "source": "Tuvalu",
+      "target": "Australia",
+      "value": 300
+    },
+    {
+      "source": "Nauru",
+      "target": "Australia",
+      "value": 400
+    },
+    {
+      "source": "Tonga",
+      "target": "New Zealand",
+      "value": 4500
+    },
+    {
+      "source": "Tonga",
+      "target": "Australia",
+      "value": 1500
+    },
+    {
+      "source": "Samoa",
+      "target": "New Zealand",
+      "value": 3500
+    },
+    {
+      "source": "Samoa",
+      "target": "Australia",
+      "value": 800
+    },
+    {
+      "source": "Fiji",
+      "target": "New Zealand",
+      "value": 2500
+    },
+    {
+      "source": "Fiji",
+      "target": "Australia",
+      "value": 1200
+    }
+  ],
+  "yearly_displacement": {
+    "_note": "Placeholder cumulative displacement estimate (persons)",
+    "series": [
+      {
+        "year": 2000,
+        "value": 5000
+      },
+      {
+        "year": 2005,
+        "value": 12000
+      },
+      {
+        "year": 2010,
+        "value": 25000
+      },
+      {
+        "year": 2015,
+        "value": 42000
+      },
+      {
+        "year": 2020,
+        "value": 68000
+      },
+      {
+        "year": 2023,
+        "value": 85000
+      }
+    ]
+  }
+}

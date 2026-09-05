@@ -1,0 +1,2 @@
+dataset,geo_pict,iso3_code,geo_name,year,month,region,indicator_id,indicator_name,indicator_desc,value,unit_measure,obs_status,obs_cmt
+CLIMATE_CHANGE_GHG_INDICATORS,NR,NRU,Nauru,1970,,No value,GHG_EMI_CAPITA,CLIMATE_CHANGE_GHG_INDICATORS,Greenhouse gaz emission per capita,0.1,TON,,

@@ -48,7 +48,7 @@ NEXT.JS DASHBOARD (reuse existing site + new Act 3)
   AI ENGINE (Python)          SMART CONTRACTS (Solidity, Hardhat)
     forecast + uncertainty      ClimateDataRegistry (hash anchors,
     risk score -> allocation    provenance)
-    backtest 1993-2023          LossDamagePool (funds, allocations)
+    backtest 2015-2025          LossDamagePool (funds, allocations)
         |                       ParametricPayout (EIP-712 verify,
         v                        trigger tiers, anti-replay)
   KEEPER / ORACLE (TS script) -> signed readings -> contracts

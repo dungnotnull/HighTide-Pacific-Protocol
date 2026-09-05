@@ -1,0 +1,182 @@
+[
+  {
+    "code": "FJ",
+    "name": "Fiji",
+    "lat": -17.7134,
+    "lon": 178.065,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "KI",
+    "name": "Kiribati",
+    "lat": 1.8363,
+    "lon": -172.8152,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "MH",
+    "name": "Marshall Islands",
+    "lat": 7.1315,
+    "lon": 171.1845,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "FM",
+    "name": "Micronesia",
+    "lat": 7.4967,
+    "lon": 150.5534,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "NR",
+    "name": "Nauru",
+    "lat": -0.5228,
+    "lon": 166.9315,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "PW",
+    "name": "Palau",
+    "lat": 7.515,
+    "lon": 134.5825,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "PG",
+    "name": "Papua New Guinea",
+    "lat": -6.315,
+    "lon": 143.9555,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "WS",
+    "name": "Samoa",
+    "lat": -13.759,
+    "lon": -172.1046,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "SB",
+    "name": "Solomon Islands",
+    "lat": -9.6457,
+    "lon": 160.1562,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "TO",
+    "name": "Tonga",
+    "lat": -21.179,
+    "lon": -175.1982,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "TV",
+    "name": "Tuvalu",
+    "lat": -7.4784,
+    "lon": 177.2016,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "VU",
+    "name": "Vanuatu",
+    "lat": -15.3767,
+    "lon": 166.9692,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "CK",
+    "name": "Cook Islands",
+    "lat": -21.2422,
+    "lon": -159.7767,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "NU",
+    "name": "Niue",
+    "lat": -19.056,
+    "lon": -169.867,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "TK",
+    "name": "Tokelau",
+    "lat": -9.1833,
+    "lon": -171.8167,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "AS",
+    "name": "American Samoa",
+    "lat": -14.271,
+    "lon": -170.702,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "NC",
+    "name": "New Caledonia",
+    "lat": -20.913,
+    "lon": 165.382,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "PF",
+    "name": "French Polynesia",
+    "lat": -17.6797,
+    "lon": -149.39,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "GU",
+    "name": "Guam",
+    "lat": 13.4441,
+    "lon": 144.7937,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  },
+  {
+    "code": "MP",
+    "name": "Northern Mariana Islands",
+    "lat": 15.1234,
+    "lon": 145.7362,
+    "latest_year": 2024,
+    "latest_value": 1.5,
+    "series": []
+  }
+]

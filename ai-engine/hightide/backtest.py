@@ -21,12 +21,6 @@ ENSO_YEARS = {2015, 2016, 2020, 2021, 2022}
 # (Widlansky et al. 2014, Journal of Climate -> [WIDLANSKY-2014]).
 STRONG_ENSO_HIGH_YEARS = {2020, 2021, 2022}
 
-
-def _slice_series(country, years):
-    by_year = dict(zip(country["years"], country["values"]))
-    return [by_year[y] for y in years if y in by_year]
-
-
 def run_backtest(
     countries,
     calibration_years,
@@ -38,17 +32,17 @@ def run_backtest(
     """Evaluate the trigger rule per country over the evaluation window."""
     events = []
     for iso2, country in countries.items():
-        cal_values = _slice_series(country, calibration_years)
-        cal = calibrate(calibration_years, cal_values)
+        by_year_map = dict(zip(country["years"], country["values"]))
+        cal_years = [y for y in calibration_years if y in by_year_map]
+        cal = calibrate(cal_years, [by_year_map[y] for y in cal_years])
         state = TriggerState()
         streak_start = None
-        by_year = dict(zip(country["years"], country["values"]))
         for year in evaluation_years:
-            if year not in by_year:
+            if year not in by_year_map:
                 state = TriggerState()
                 streak_start = None
                 continue
-            z = zscore(cal, year, by_year[year])
+            z = zscore(cal, year, by_year_map[year])
             if state.streak == 0:
                 streak_start = year
             _, fired = update_trigger(state, z, k, n_consecutive)

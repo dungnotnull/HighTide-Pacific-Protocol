@@ -13,6 +13,7 @@ from hightide.stats import calibrate
 CALIBRATION_YEARS = list(range(2005, 2015))
 EVALUATION_YEARS = list(range(2015, 2026))
 FORECAST_HORIZON = 5
+WARNING_SIGMA = 1.0
 TREND_FILE = OUTPUT_DIR.parent / "sea_level_trend.json"
 
 
@@ -68,7 +69,7 @@ def run_pipeline(data_path=None, output_dir=None):
         f = forecasts[code]
         next_year = f["trigger_forecast"]["forecast_years"][0]
         cal = calibrations[code]
-        warn_threshold = cal.intercept + cal.slope * next_year + 1.0 * cal.sigma
+        warn_threshold = cal.intercept + cal.slope * next_year + WARNING_SIGMA * cal.sigma
         risk_inputs.append(
             {
                 "iso2": code,
@@ -121,9 +122,13 @@ def run_pipeline(data_path=None, output_dir=None):
         },
     }
 
+    forecasts_payload = {
+        "countries": forecasts,
+    }
+
     outputs = {
         "trigger_params": trigger_params,
-        "forecasts": forecasts,
+        "forecasts": forecasts_payload,
         "risk_allocation": risk_allocation,
         "backtest_report": backtest,
     }

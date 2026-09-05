@@ -29,11 +29,17 @@ def test_pipeline_outputs_valid_and_deterministic(tmp_path):
     assert abs(sum(c["allocation_weight"] for c in weights.values()) - 1.0) < 1e-4
 
     # dual-series: 30-year trend data present, trend rate scientifically sane
-    tv = out1["forecasts"]["TV"]
+    tv = out1["forecasts"]["countries"]["TV"]
     assert tv["trend_years"][0] == 1993 and len(tv["trend_years"]) == 31
     assert "trigger_forecast" in tv and "trend_forecast" in tv
     risk_tv = out1["risk_allocation"]["countries"]["TV"]
     assert 0 < risk_tv["trend_mm_yr"] < 20  # mm/yr: plausible SLR bound
+
+    # cross-file contract: one consistent country domain everywhere
+    domain = set(params["countries"])
+    assert set(out1["forecasts"]["countries"]) == domain
+    assert set(weights) == domain
+    assert all(ev["iso2"] in domain for ev in out1["backtest_report"]["events"])
 
     # backtest summary present with chosen params echoed in trigger params
     assert out1["backtest_report"]["summary"]["total_events"] >= 0

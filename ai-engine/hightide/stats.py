@@ -3,7 +3,7 @@
 Threshold(year) = intercept + slope*year + k*sigma, where (intercept, slope,
 sigma) come from an OLS fit + residual std over the calibration window.
 This makes triggers fire on acute anomalies above the rising long-term
-trend (e.g. El Nino spikes) rather than on the trend itself.
+trend (e.g. ENSO-driven anomalies; in the western tropical Pacific the highs coincide with La Nina years) rather than on the trend itself.
 """
 
 from dataclasses import dataclass

@@ -1,0 +1,128 @@
+# HighTide Protocol — Design Spec
+
+**Date:** 2026-09-05
+**Status:** Approved (pending user spec review)
+**Hackathon:** IEEE ClimateChain Global Hackathon 2026 (https://ieee-climatechain-hack.devpost.com/)
+**Track:** 1 — Carbon Markets & Emissions Transparency
+
+## 1. One-liner
+
+An AI-forecasted, blockchain-triggered Loss & Damage fund that pays Pacific Island communities automatically when verified sea-level data crosses scientific thresholds — funded by historical emissions responsibility, immune to double-counting.
+
+**Narrative hook (from the existing project):** "PICs emit the least but risk losing the most." HighTide turns that story into a mechanism: the carbon debt, repaid by the tide.
+
+## 2. Hackathon alignment
+
+### Track 1 justification
+- **Emissions tracking:** the fund's contribution weights are derived from real historical per-capita GHG data (1970–2024) and major-emitter context — an on-chain emissions responsibility ledger.
+- **Smart contracts to prevent double counting:** literal implementation — each trigger event can be paid exactly once; replay attempts are rejected on-chain.
+- **Transparent carbon/climate finance platform:** every pool balance, trigger, and payout is verifiable on a public testnet explorer.
+
+### Judging criteria mapping
+| Criterion | How HighTide scores |
+|---|---|
+| Climate Impact | Direct mechanism for UN Loss & Damage disbursement — a real COP31 pain point (slow, opaque, contested allocation) |
+| Innovation & Creativity | Climate-justice fintech: historical responsibility → automated repayment. Distinct from carbon-credit clones |
+| Technical Execution | Three real layers: AI forecasting on real data + EIP-712 signed oracle verification on-chain + parametric smart contracts with anti-replay |
+| Practical Usefulness | Loss & Damage Fund (pledged ~$700M under UNFCCC) lacks trusted disbursement rails; backtest proves workable thresholds |
+| Presentation | Existing award-style scrollytelling site becomes the public dashboard; kinescopic demo (El Niño replay → instant payout → rejected replay) |
+
+## 3. Actors
+
+| Actor | Role | In demo |
+|---|---|---|
+| Donor / Funder | Deposits test tokens into the pool, weighted by emissions responsibility | Script + dashboard button |
+| Oracle | Submits signed sea-level readings | Keeper script replaying real PDH history |
+| AI Engine | Forecasts, risk scores, allocation weights | Python service on real data |
+| Beneficiary (PIC) | Registered country wallet receiving payouts | Test wallets per country |
+| Public / Judges | Verify everything via dashboard + testnet explorer | Vercel URL + explorer links |
+
+## 4. Architecture
+
+```
+NEXT.JS DASHBOARD (reuse existing site + new Act 3)
+  Act 1-2: Cause -> Reality (existing scrollytelling, kept)
+  Act 3: THE PROTOCOL (pool status, risk map, trigger feed,
+         payout history, testnet links)
+        | reads JSON/API              | listens events
+  AI ENGINE (Python)          SMART CONTRACTS (Solidity, Hardhat)
+    forecast + uncertainty      ClimateDataRegistry (hash anchors,
+    risk score -> allocation    provenance)
+    backtest 1993-2023          LossDamagePool (funds, allocations)
+        |                       ParametricPayout (EIP-712 verify,
+        v                        trigger tiers, anti-replay)
+  KEEPER / ORACLE (TS script) -> signed readings -> contracts
+  Base Sepolia testnet
+```
+
+## 5. Components
+
+### 5.1 Smart contracts (`/contracts`, Hardhat + OpenZeppelin)
+- **MockFundToken (ERC20):** stand-in for fund currency on testnet.
+- **ClimateDataRegistry:** anchors dataset hashes (source, indicator, period, uploader signature); emits audit events.
+- **LossDamagePool:** holds token balances; per-country allocations set from AI weights (owner-governed via signed AI attestation hash).
+- **ParametricPayout:** verifies oracle EIP-712 signatures; evaluates trigger thresholds; tiered payout; one payout per event id (anti-double-count); pro-rata if pool short.
+
+### 5.2 AI Engine (`/ai-engine`, Python)
+- **Forecast:** per-country sea-level trend + prediction intervals (80/95%) — statsmodels statistical forecasting, not deep learning (scientific honesty: ~30 annual points per country).
+- **Risk scoring:** exceedance probability within 12-month horizon -> normalized risk index -> pool allocation weights. Output JSON hash-anchored via ClimateDataRegistry.
+- **Backtest:** replay protocol 1993–2023 against real data; report trigger dates, tiers, hypothetical payouts; validate against documented El Niño episodes (1997–98, 2015–16, 2020–22). This is the credibility centerpiece.
+
+### 5.3 Keeper / Oracle (`/keeper`, TypeScript)
+- Holds oracle key; replays real PDH series as time-accelerated signed readings; exposes a "run demo scenario" entry point (El Niño 2015–16).
+
+### 5.4 Dashboard (existing Next.js)
+- Acts 1–2 unchanged.
+- Act 3 "The Protocol": live pool balance, per-country risk table/map (AI output), trigger event feed, payout history, per-chart hash-provenance links to testnet explorer.
+- Every displayed metric traces to an on-chain anchor or signed source.
+
+## 6. Trigger design (scientific core)
+
+| Item | Definition |
+|---|---|
+| Baseline | Per-country mean sea level 1993–2023 (real PDH data) |
+| Trigger threshold | Reading >= baseline + k·sigma (initial k=2; backtest may revise, final value documented in README) |
+| Persistence | N=2 consecutive readings above threshold (anti-noise) |
+| Payout tiers | 1–2 sigma: 30% of allocation; 2–3 sigma: 60%; >3 sigma: 100% |
+| Demo event | El Niño 2015–16 sea-level spike (real, present in dataset) |
+
+## 7. Mock vs real (submission honesty table)
+
+| Real | Mock (disclosed) |
+|---|---|
+| PDH climate data | Fund = test tokens |
+| AI forecasts from real data | Oracle = our server replaying history |
+| Contracts on public testnet | Time acceleration for demo |
+| Signature verification, anti-replay, provenance | Single oracle (production path: multi-oracle quorum, documented) |
+
+## 8. Error handling & edge cases
+- **Pool insufficiency:** pro-rata payout; remainder owed tracked in contract state.
+- **Missing readings:** trigger evaluation pauses until N consecutive readings resume.
+- **Oracle compromise:** production path documented (multi-oracle quorum + Chainlink adapter); demo uses single registered oracle.
+- **Data gaps per country:** risk engine requires minimum history (e.g. >= 15 years); countries below threshold excluded from allocation.
+
+## 9. Testing strategy
+- **Contracts (Hardhat/Chai):** signature acceptance/rejection, trigger on/off, tier math, replay rejection, pro-rata math.
+- **AI:** backtest script reproducible (fixed seed, deterministic pipeline); sanity checks on forecast intervals.
+- **E2E:** demo scenario script runs full path (reading -> trigger -> payout -> rejected replay) against a local node; then verified on testnet.
+
+## 10. Submission plan
+- New public GitHub repo (fresh history; original repo untouched).
+- Vercel deployment of the dashboard.
+- Video (3–5 min): 30s problem (reuse Act 1–2 b-roll) / 60s architecture / ~2 min live demo incl. rejected replay / 30s backtest + scaling story.
+- Devpost description structured by the five judging criteria.
+
+## 11. Out of scope (YAGNI)
+- Mainnet, real money, KYC.
+- Chainlink production integration (documented as production path only).
+- Multi-oracle quorum implementation (documented).
+- Migration data (existing placeholder file — unused).
+- Accounts/auth/roles UI beyond what the demo needs.
+
+## 12. Deliverables checklist
+- [ ] Contracts + tests passing on Hardhat; deployed to testnet
+- [ ] AI engine: forecast + risk + backtest outputs committed as JSON
+- [ ] Keeper demo scenario (El Niño replay) with one-command run
+- [ ] Dashboard Act 3 integrated with contracts via ethers.js
+- [ ] README with architecture + honesty table + run instructions
+- [ ] Demo video + Devpost submission

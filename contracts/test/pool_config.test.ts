@@ -91,4 +91,23 @@ describe("HighTidePool configuration", () => {
     expect(await pool.referencePool()).to.equal(ethers.parseEther("10000000"));
     expect(await pool.token()).to.equal(await token.getAddress());
   });
+
+  it("rejects zero nConsecutive and zero k", async () => {
+    const { pool, owner, other } = await deploy();
+    await expect(
+      pool.connect(owner).setCountry(
+        "0x5456", "Tuvalu", tvParams.interceptScaled, tvParams.slopeScaled,
+        tvParams.sigmaScaled, tvParams.kScaled, 0, tvParams.weightScaled,
+        other.address
+      )
+    ).to.be.revertedWithCustomError(pool, "ZeroNConsecutive");
+
+    await expect(
+      pool.connect(owner).setCountry(
+        "0x5456", "Tuvalu", tvParams.interceptScaled, tvParams.slopeScaled,
+        tvParams.sigmaScaled, 0n, 1, tvParams.weightScaled,
+        other.address
+      )
+    ).to.be.revertedWithCustomError(pool, "ZeroK");
+  });
 });

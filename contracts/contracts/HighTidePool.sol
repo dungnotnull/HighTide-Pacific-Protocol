@@ -85,6 +85,8 @@ contract HighTidePool is Ownable {
     error PayoutAlreadyExecuted(bytes32 eventId);
     error ZeroSigma(bytes2 country);
     error ZeroWeight(bytes2 country);
+    error ZeroNConsecutive(bytes2 country);
+    error ZeroK(bytes2 country);
 
     constructor(
         address token_,
@@ -125,6 +127,8 @@ contract HighTidePool is Ownable {
     ) external onlyOwner {
         if (sigmaScaled <= 0) revert ZeroSigma(code);
         if (weightScaled == 0) revert ZeroWeight(code);
+        if (nConsecutive == 0) revert ZeroNConsecutive(code);
+        if (kScaled == 0) revert ZeroK(code);
         countryParams[code] = CountryParams({
             name: name,
             interceptScaled: interceptScaled,

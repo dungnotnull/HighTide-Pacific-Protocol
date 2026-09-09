@@ -23,7 +23,7 @@ export default function Nav() {
               Tide&nbsp;&amp;&nbsp;Table
             </span>
             <span className="hidden sm:inline font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
-              Pacific Dataviz Challenge
+              HighTide Protocol
             </span>
           </Link>
           <nav className="flex items-center gap-1 overflow-x-auto">

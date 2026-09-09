@@ -75,9 +75,9 @@ export async function run(scenario: string) {
     const amount = ethers.parseEther("10000000");
     await (await token.mint(donor.address, amount)).wait();
     await (
-      await token.connect(donor).approve(dep.pool, amount)
+      await (token.connect(donor) as any).approve(dep.pool, amount)
     ).wait();
-    await (await pool.connect(donor).fund(amount)).wait();
+    await (await (pool.connect(donor) as any).fund(amount)).wait();
     console.log(`Funded pool with 10,000,000 HTD`);
     console.log(`Pool balance: ${ethers.formatEther(await token.balanceOf(dep.pool))} HTD`);
     return;
@@ -87,7 +87,7 @@ export async function run(scenario: string) {
     // Replay Tuvalu's documented La Nina-window readings (real data)
     const years = [2020, 2021, 2022];
     const series = seaLevelSeries("Tuvalu").filter((p) => years.includes(p.year));
-    console.log(`Replaying Tuvalu ${years.join("/")} (oracle: ${dep.oracle})`);
+    console.log(`Replaying Tuvalu ${years.join("/")} (oracle: ${dep.oracle.substring(0,6)}...xxxxxxxxxxxxx)`);
     for (const point of series) {
       const tx = await submitReading(
         poolOracle, oracle, chainId, TV, point.year, toScaled(point.value)
@@ -107,7 +107,7 @@ export async function run(scenario: string) {
       }
       for (const e of paid) {
         console.log(
-          `  PAID ${ethers.formatEther(e.args.paid)} HTD to ${e.args.beneficiary} ` +
+          `  PAID ${ethers.formatEther(e.args.paid)} HTD to ${e.args.beneficiary.substring(0,6)}...xxxxxxxxxxxxx ` +
           `(outstanding ${ethers.formatEther(e.args.outstanding)})`
         );
       }

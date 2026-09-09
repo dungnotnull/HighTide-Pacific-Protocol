@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "flag-icons/css/flag-icons.min.css";
 @import "@fontsource/fraunces/400.css";
 @import "@fontsource/fraunces/500.css";
@@ -11,18 +12,18 @@
 @import "@fontsource/ibm-plex-mono/500.css";
 
 :root {
-  --ink: #0e2a2c; /* deep teal-black - primary text on light bg */
-  --ocean-deep: #0a1e28; /* near-black night ocean - hero / dark sections */
-  --ocean-mid: #123842; /* secondary dark surface */
-  --lagoon: #2c7a79; /* teal - structural accent, links, strokes */
-  --lagoon-soft: #bcd8d3; /* pale teal - subtle fills, gridlines */
-  --foam: #eef2ee; /* pale seafoam off-white - main light bg */
-  --foam-warm: #e7e2d6; /* warm sand - card surfaces on light bg */
-  --coral: #e2603d; /* warm coral - reserved for PICs / impact data */
-  --coral-soft: #f3ab8f; /* pale coral - hover/soft states of the above */
-  --slate: #8ea19d; /* muted blue-grey - comparison / rest-of-world */
-  --gold: #d99a3d; /* sunset gold - sparingly, callouts only */
-  --line: rgba(14, 42, 44, 0.12);
+  --ink: #1b2e21; /* deep forest green-black - primary text on light bg */
+  --ocean-deep: #0d1a12; /* near-black forest - hero / dark sections */
+  --ocean-mid: #183321; /* secondary dark surface */
+  --lagoon: #3d7a48; /* pine green - structural accent, links, strokes */
+  --lagoon-soft: #c2d8c6; /* pale green - subtle fills, gridlines */
+  --foam: #f2f0ea; /* pale clay/sand off-white - main light bg */
+  --foam-warm: #e8e3d5; /* warm terracotta dust - card surfaces on light bg */
+  --coral: #c95b32; /* earth rust/clay - reserved for PICs / impact data */
+  --coral-soft: #e3a68d; /* pale clay - hover/soft states of the above */
+  --slate: #919e95; /* muted sage-grey - comparison / rest-of-world */
+  --gold: #d4a342; /* raw gold - sparingly, callouts only */
+  --line: rgba(27, 46, 33, 0.12);
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;

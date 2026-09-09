@@ -7,6 +7,7 @@ import { BackToTop } from "@/components/ui/BackToTop";
 import Part2Chart2V2 from "@/components/sections/part2/Chart2v2";
 import IndicatorsHub from "@/components/indicators/page";
 import { ProtocolSection } from "@/components/sections/protocol/ProtocolSection";
+import AIRecommendationSection from "@/components/sections/AIRecommendationSection";
 
 const MARKS = [
   { id: "closing", label: "closing" },
@@ -37,10 +38,11 @@ export default function Home() {
       <IndicatorsHub />
       <Part2Chart2V2 />
       <ProtocolSection />
+      <AIRecommendationSection />
 
       <footer
         id="closing"
-        className="border-t border-foam/10 bg-ocean-deep px-6 py-16 text-foam md:px-16"
+        className="bg-ocean-deep px-6 py-16 text-foam md:px-16 -mt-1"
       >
         <div className="mx-auto max-w-6xl">
           <p className="prose-col max-w-xl font-display text-xl italic leading-snug text-foam/85">
@@ -82,9 +84,9 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <p className="eyebrow text-foam/70">Entry for</p>
+              <p className="eyebrow text-foam/70">Project</p>
               <p className="mt-2 leading-relaxed">
-                Pacific Dataviz Challenge, interactive category.
+                HighTide Protocol: Repaying the Carbon Debt.
               </p>
             </div>
           </div>

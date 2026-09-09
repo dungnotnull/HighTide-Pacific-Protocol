@@ -10,7 +10,7 @@ function loadJson(rel: string): any {
 
 async function main() {
   const [owner] = await ethers.getSigners();
-  console.log(`Deploying on network "${network.name}" from ${owner.address}`);
+  console.log(`Deploying on network "${network.name}" from ${owner.address.substring(0,6)}...xxxxxxxxxxxxx`);
 
   const triggerParams = loadJson("data/protocol/trigger_params.json");
   const riskAllocation = loadJson("data/protocol/risk_allocation.json");
@@ -51,10 +51,10 @@ async function main() {
   );
   await pool.waitForDeployment();
 
-  console.log("MockFundToken:   ", await token.getAddress());
-  console.log("ClimateRegistry: ", await registry.getAddress());
-  console.log("HighTidePool:    ", await pool.getAddress());
-  console.log("Oracle:          ", oracleAddress);
+  console.log("MockFundToken:   ", (await token.getAddress()).substring(0,6) + '...xxxxxxxxxxxxx');
+  console.log("ClimateRegistry: ", (await registry.getAddress()).substring(0,6) + '...xxxxxxxxxxxxx');
+  console.log("HighTidePool:    ", (await pool.getAddress()).substring(0,6) + '...xxxxxxxxxxxxx');
+  console.log("Oracle:          ", oracleAddress.substring(0,6) + '...xxxxxxxxxxxxx');
 
   // Configure all countries from Plan 1 outputs
   const codes = Object.keys(triggerParams.countries);
@@ -77,7 +77,7 @@ async function main() {
       BigInt(Math.round(weight * 1_000_000)),
       wallets[i].address
     );
-    console.log(`  configured ${code} ${c.name} -> ${wallets[i].address}`);
+    console.log(`  configured ${code} ${c.name} -> ${wallets[i].address.substring(0,6)}...xxxxxxxxxxxxx`);
     i++;
   }
 
@@ -93,7 +93,7 @@ async function main() {
     );
     const hash = ethers.keccak256(bytes);
     await registry.anchor(hash, `data/protocol/${file}.json`, file, 2005, 2025);
-    console.log(`  anchored ${file}: ${hash}`);
+    console.log(`  anchored ${file}: ${hash.substring(0,6)}...xxxxxxxxxxxxx`);
   }
 
   // Persist addresses + ABIs for the keeper and dashboard

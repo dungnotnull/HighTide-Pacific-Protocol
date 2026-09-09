@@ -4,9 +4,9 @@ import "./globals.css";
 import { SITE_URL } from "@/lib/site";
 
 const SITE_TITLE =
-  "A Pacific Climate Crisis - Seas Climb High, Isles Sink Low, WASH in PICs";
+  "HighTide: Repaying the Carbon Debt";
 const SITE_DESCRIPTION =
-  "Pacific Island Countries pollute the least yet pay the most: as seas climb, clean water and sanitation (WASH) decline. An interactive data story on sea level rise and WASH across the Pacific.";
+  "Pacific Island Countries pollute the least yet pay the most. HighTide is an AI-forecasted, blockchain-triggered Loss & Damage protocol that pays Pacific communities automatically when sea levels rise, funded by historical carbon debt.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,13 +24,12 @@ export const metadata: Metadata = {
     "pacific islands",
     "sea level rise",
     "WASH",
-    "water sanitation hygiene",
-    "clean water",
-    "open defecation",
-    "rural urban divide",
+    "carbon debt",
+    "loss and damage",
+    "smart contracts",
+    "blockchain",
     "emissions",
-    "data visualization",
-    "interactive story",
+    "HighTide",
     "Pacific Data Hub"
   ],
   authors: [
@@ -45,13 +44,13 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: "/",
-    siteName: "A Pacific Climate Crisis",
+    siteName: "HighTide Protocol",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "A Pacific climate crisis: seas climb high, isles sink low, wash in PICs",
+        alt: "HighTide: Repaying the Carbon Debt",
       },
     ],
     locale: "en_US",

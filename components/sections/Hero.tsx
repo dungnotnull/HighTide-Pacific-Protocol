@@ -42,28 +42,23 @@ export function Hero() {
               </p>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={400}>
-              <h1 className="mt-5 max-w-2xl font-display text-[clamp(2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-tight">
-                SEAS CLIMB HIGH, ISLES SINK LOW, WASH IN PICs
+              <h1 className="mt-5 max-w-2xl font-display text-[clamp(2rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-tight text-gold">
+                HIGHTIDE: REPAYING THE CARBON DEBT
               </h1>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={600}>
               <div className="mt-7 text-lg text-foam/70 space-y-4 max-w-[820px]">
                 <p>
-                  Pacific Island Countries (PICs) have some of the lowest water,
-                  sanitation, and hygiene (WASH) coverage rates globally, while
-                  also being among the countries most vulnerable to climate
-                  change. Sea level rise has further intensified WASH
-                  challenges across the Pacific region.
+                  Pacific Island Countries pollute the least yet pay the most. Carbon emissions from major industrial nations drive sea-level rise, which directly destroys critical water, sanitation, and hygiene (WASH) infrastructure across the Pacific.
                 </p>
                 <p>
-                  Using the available data, we examine this relationship and
-                  explore how WASH conditions have evolved in PICs.
+                  HighTide is an AI-forecasted, blockchain-triggered Loss & Damage protocol that measures this devastation and pays out automatically when sea levels cross scientific thresholds—repaying the historical carbon debt.
                 </p>
               </div>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={800}>
               <div className="mt-14 flex items-center gap-3 text-foam/50">
-                <span className="eyebrow"> By Ngoc Nguyen, Dung Truong, Lan Nguyen, Thu Truong</span>
+                <span className="eyebrow"> By Dung Truong</span>
                 <span className="h-8 w-px animate-pulse bg-foam/30" />
               </div>
             </ScrollReveal>
@@ -126,12 +121,13 @@ export function Hero() {
           <path d="M0 20V11.5C0 5.15 4.5 0.9 11 0L11.8 3.1C7.8 4 5.6 6.7 5.3 10.2H10V20H0ZM16.2 20V11.5C16.2 5.15 20.7 0.9 27.2 0L28 3.1C24 4 21.8 6.7 21.5 10.2H26.2V20H16.2Z" fill="currentColor"/>
         </svg>
         <p className="font-display text-2xl italic leading-relaxed text-foam md:text-3xl animate-on-scroll animate-fade-up is-visible">
-          The sea keeps us alive, but now it starts to rise,<br/>
-then clean water declines,<br/>
+          The sea kept us alive, but carbon fills the skies,<br/>
+now the warming waters rise,<br/>
+and clean water declines,<br/>
 W.A.S.H can barely supply.<br/>
-Humans fight,<br/>
-humans try,<br/>
-… to survive.<br/>
+We fight,<br/>
+we try,<br/>
+… while their carbon debt multiplies.<br/>
         </p>
         <ScrollReveal animation="fade-up" delay={600}>
           <p className="eyebrow mt-6 text-foam/45">So why?</p>

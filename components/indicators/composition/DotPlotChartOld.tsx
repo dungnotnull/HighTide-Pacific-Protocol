@@ -166,19 +166,13 @@ export default function DotPlotChartOld() {
         </ScrollReveal>
         <ScrollReveal animation="fade-down" delay={200}>
           <h2 className="font-display text-2xl sm:text-3xl text-ink max-w-3xl mt-2">
-            As the sea rises, WASH stands still
+            The Carbon Consequence: WASH in peril
           </h2>
         </ScrollReveal>
         <ScrollReveal animation="fade-up" delay={400}>
           <div className="mt-3 max-w-3xl text-sm sm:text-base text-ink-dim leading-relaxed space-y-3">
             <p>
-              Water, Sanitation, and Hygiene (WASH) is a fundamental part of
-              development, enabling families to live clean and healthy lives.
-              Yet delivering WASH services across PICs remains difficult due to
-              their remote geography, small and largely rural populations,
-              limited resources, and cultural diversity. WASH challenges have
-              been intensified by climate change, especially rising sea
-              levels.
+              This is the direct price paid for the massive carbon emissions shown above. As industrial nations emit, the Pacific sea level rises, crippling critical Water, Sanitation, and Hygiene (WASH) infrastructure. Delivering WASH services across PICs is already difficult due to remote geography and limited resources, but rising seas have turned a challenge into an existential crisis.
             </p>
             <p>
               Climate change is generating unsanitary conditions that limit
